@@ -88,7 +88,41 @@ namespace tphsensor {
 		H6 = pins.i2cReadNumber(118, NumberFormat.UInt8LE, false)
 		if (H6 < 0) H6 = 256 + H6
 	}
+	
+	function CalTemp() {
+		var1 = (T / 16384.0 - T1 / 1024.0) * T2
+		var2 = ((T / 131072.0 - T1 / 8192.0) * (T / 131072.0 - T1 / 8192.0)) * T3
+		tfine = (var1 + var2) %  4294967296
+		Temperature = (var1 + var2) / 5120.0
+	}
+	
+	function CalPressure() {
+		var1 = tfine / 2.0 - 64000.0;
+		var2 = var1 * var1 * P6 / 32768.0;
+		var2 = var2 + var1 * P5 * 2.0;
+		var2 = var2 / 4.0 + P4 * 65536.0;
+		var1 = (P3 * var1 * var1 / 524288.0 + P2 * var1) / 524288.0;
+		var1 = (1.0 + var1 / 32768.0) * P1;
+		if (var1 == 0.0) {
+			Pressure = 0
+			return
+		}
+		p = 1048576.0 - P;p = (p - var2 / 4096.0) * 6250.0 / var1;
+		/*    var1 = P9 * p * p / 2147483648.0; */
+		var1 = P9 * (p / 65536) * (p / 32768);
+		var2 = p * P8 / 32768.0;
+		p = p + (var1 + var2 + P7) / 16.0;
+		Pressure = p;
+	}
 
+	function CalHumidity() {
+		varH = tfine - 76800.0;
+		varH = (H - (H4 * 64.0 + H5 / 16384.0 * varH)) * (H2 / 65536.0 * (1.0 + H6 / 67108864.0 * varH * (1.0 + H3 / 67108864.0 * varH)));
+		varH = varH * (1.0 - H1 * varH / 524288.0);
+		if (varH < 0) varH = 0;
+		if (varH > 100) Humidity = 100
+		else Humidity = varH
+	}
 
     /* BME280 TPH sensor addr 0x76 return boolean */
     //% blockId="tphsensorStart" block="TPH Sensor Start"
@@ -122,9 +156,14 @@ namespace tphsensor {
     export function tphgettemp(): number {
 	pins.setPull(DigitalPin.P19, PinPullMode.PullUp)
 	pins.setPull(DigitalPin.P20, PinPullMode.PullUp)
-	pins.i2cWriteNumber(90,6,NumberFormat.UInt8LE,true)
-	let Ta = pins.i2cReadNumber(90, NumberFormat.UInt16LE, false)
-        return Math.round(Ta * 0.02 - 273.15)
+        pins.i2cWriteNumber(118, 250, NumberFormat.UInt8BE, false)
+        basic.pause(200)
+        T = pins.i2cReadNumber(118, NumberFormat.UInt32BE, false)
+        basic.pause(200)
+        T = Math.idiv(T, 4096)
+        if (T < 0) T = 1048576 + T
+	CalTemperature()
+	return Temperature
     }
 
 
@@ -134,9 +173,14 @@ namespace tphsensor {
     export function tphgetPressure(): number {
 	pins.setPull(DigitalPin.P19, PinPullMode.PullUp)
 	pins.setPull(DigitalPin.P20, PinPullMode.PullUp)
-	pins.i2cWriteNumber(90,7,NumberFormat.UInt8LE,true)
-	let To = pins.i2cReadNumber(90, NumberFormat.UInt16LE, false)
-        return Math.round(To * 0.02 - 273.15)
+        pins.i2cWriteNumber(118, 247, NumberFormat.UInt8BE, false)
+        basic.pause(200)
+        P = pins.i2cReadNumber(118, NumberFormat.UInt32BE, false)
+        basic.pause(200)
+        P = Math.idiv(P, 4096)
+        if (P < 0) P = 1048576 + P
+	CalPressure()
+	return Pressure
     }
 
     /* BME280 TPH sensor get Humidity addr 0x76 register 0xFD, FE return number */
@@ -145,9 +189,13 @@ namespace tphsensor {
     export function tphgetHumidty(): number {
 	pins.setPull(DigitalPin.P19, PinPullMode.PullUp)
 	pins.setPull(DigitalPin.P20, PinPullMode.PullUp)
-	pins.i2cWriteNumber(90,240,NumberFormat.UInt8LE,true)
-	let flag = pins.i2cReadNumber(90, NumberFormat.UInt16LE, false)
-        return Math.idiv(flag, 4096)
+        pins.i2cWriteNumber(118, 253, NumberFormat.UInt8BE, false)
+        basic.pause(200)
+        H = pins.i2cReadNumber(118, NumberFormat.UInt16BE, false)
+        basic.pause(200)
+        if (H < 0) H = 65536 + H
+	CalHumidity()
+	return Humidity
     }
 
 }
