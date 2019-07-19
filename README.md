@@ -1,4 +1,4 @@
-# TPH Sensor
+# TPHSensor
 
 自製的 micro:bit TPH Sensor 積木
 
