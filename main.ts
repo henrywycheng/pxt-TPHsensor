@@ -1,4 +1,4 @@
-//% weight=0 color=#3CB371 icon="\uf1b3" block="tphsensor"
+//% weight=0 color=#3CB371 icon="\uf1b3" block="TPH Sensor"
 
 namespace tphsensor {
     /* BME280 TPH sensor addr 0x76 return boolean */
