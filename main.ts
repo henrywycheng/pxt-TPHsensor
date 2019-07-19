@@ -88,7 +88,7 @@ namespace tphsensor {
 		pins.i2cWriteNumber(118, 231, NumberFormat.UInt8LE, false)
 		H6 = pins.i2cReadNumber(118, NumberFormat.UInt8LE, false)
 		if (H6 < 0) H6 = 256 + H6
-}
+	}
 
 
     /* BME280 TPH sensor addr 0x76 return boolean */
