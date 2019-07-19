@@ -102,7 +102,7 @@ namespace tphsensor {
 	    basic.pause(200)
 	    pins.i2cWriteNumber(118, 243, NumberFormat.UInt8BE, false)
 	    basic.pause(200)
-	    if ((pins.i2cReadNumber(118, NumberFormat.UInt8BE, false) & 9) !=0 ) return false
+	    if (pins.i2cReadNumber(118, NumberFormat.UInt8BE, false) !=0 ) return false
 	    basic.pause(200)
 	    pins.i2cWriteNumber(118, 57526, NumberFormat.UInt16BE, false)
 	    basic.pause(200)
