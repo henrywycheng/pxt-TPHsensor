@@ -1,0 +1,15 @@
+{
+    "name": "tphsensor",
+    "version": "0.0.1",
+    "description": "自製的 micro:bit TPH Sensor 積木",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*"
+    },
+    "files": [
+        "README.md",
+        "main.ts",
+        "_locales/zh/tphsensorblock-strings.json"
+    ],
+    "public": true
+}
