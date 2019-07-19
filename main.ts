@@ -95,13 +95,26 @@ namespace tphsensor {
     //% blockId="tphsensorStart" block="TPH Sensor Start"
     //% blockGap=2 weight=89
     export function tphsensorStart() {
-	pins.setPull(DigitalPin.P19, PinPullMode.PullUp)
-	pins.setPull(DigitalPin.P20, PinPullMode.PullUp)
-	pins.i2cWriteNumber(90,46,NumberFormat.UInt8LE,true)
-	if (pins.i2cReadNumber(90, NumberFormat.UInt8LE, false) != 90) {
-		return false
-	}
-	return true
+	    pins.setPull(DigitalPin.P19, PinPullMode.PullUp)
+	    pins.setPull(DigitalPin.P20, PinPullMode.PullUp)
+	    pins.i2cWriteNumber(118, 208, NumberFormat.UInt8BE, false)
+	    basic.pause(200)
+	    if (pins.i2cReadNumber(118, NumberFormat.UInt8BE, false) !=96 ) return false
+	    basic.pause(200)
+	    pins.i2cWriteNumber(118, 243, NumberFormat.UInt8BE, false)
+	    basic.pause(200)
+	    if ((pins.i2cReadNumber(118, NumberFormat.UInt8BE, false) & 9) !=0 ) return false
+	    basic.pause(200)
+	    pins.i2cWriteNumber(118, 57526, NumberFormat.UInt16BE, false)
+	    basic.pause(200)
+	    pins.i2cWriteNumber(118, 61957, NumberFormat.UInt16BE, false)
+	    basic.pause(200)
+	    pins.i2cWriteNumber(118, 62720, NumberFormat.UInt16BE, false)
+	    basic.pause(200)
+	    pins.i2cWriteNumber(118, 62527, NumberFormat.UInt16BE, false)
+	    basic.pause(200)
+	    ReadCoeff()
+	    return true
     }
 
     /* BME280 TPH sensor get Tempearture addr 0x76 register 0xFA,FB,FC return number */
