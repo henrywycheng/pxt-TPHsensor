@@ -97,29 +97,30 @@ namespace tphsensor {
 	}
 	
 	function CalPressure() {
-		var1 = tfine / 2.0 - 64000.0;
-		var2 = var1 * var1 * P6 / 32768.0;
-		var2 = var2 + var1 * P5 * 2.0;
-		var2 = var2 / 4.0 + P4 * 65536.0;
-		var1 = (P3 * var1 * var1 / 524288.0 + P2 * var1) / 524288.0;
-		var1 = (1.0 + var1 / 32768.0) * P1;
+		var1 = tfine / 2.0 - 64000.0
+		var2 = var1 * var1 * P6 / 32768.0
+		var2 = var2 + var1 * P5 * 2.0
+		var2 = var2 / 4.0 + P4 * 65536.0
+		var1 = (P3 * var1 * var1 / 524288.0 + P2 * var1) / 524288.0
+		var1 = (1.0 + var1 / 32768.0) * P1
 		if (var1 == 0.0) {
 			Pressure = 0
 			return
 		}
-		p = 1048576.0 - P;p = (p - var2 / 4096.0) * 6250.0 / var1;
+		p = 1048576.0 - P
+		p = (p - var2 / 4096.0) * 6250.0 / var1
 		/*    var1 = P9 * p * p / 2147483648.0; */
-		var1 = P9 * (p / 65536) * (p / 32768);
-		var2 = p * P8 / 32768.0;
-		p = p + (var1 + var2 + P7) / 16.0;
-		Pressure = p;
+		var1 = P9 * (p / 65536) * (p / 32768)
+		var2 = p * P8 / 32768.0
+		p = p + (var1 + var2 + P7) / 16.0
+		Pressure = p
 	}
 
 	function CalHumidity() {
-		varH = tfine - 76800.0;
-		varH = (H - (H4 * 64.0 + H5 / 16384.0 * varH)) * (H2 / 65536.0 * (1.0 + H6 / 67108864.0 * varH * (1.0 + H3 / 67108864.0 * varH)));
-		varH = varH * (1.0 - H1 * varH / 524288.0);
-		if (varH < 0) varH = 0;
+		varH = tfine - 76800.0
+		varH = (H - (H4 * 64.0 + H5 / 16384.0 * varH)) * (H2 / 65536.0 * (1.0 + H6 / 67108864.0 * varH * (1.0 + H3 / 67108864.0 * varH)))
+		varH = varH * (1.0 - H1 * varH / 524288.0)
+		if (varH < 0) varH = 0
 		if (varH > 100) Humidity = 100
 		else Humidity = varH
 	}
