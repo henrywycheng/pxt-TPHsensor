@@ -2,7 +2,6 @@
 
 namespace tphsensor {
 
-	let status = 0
 	let T1 = 0
 	let T2 = 0
 	let T3 = 0
