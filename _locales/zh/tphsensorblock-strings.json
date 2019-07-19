@@ -1,0 +1,13 @@
+﻿﻿{
+
+    "tphsensor|block": "自訂 sensor",
+
+    "tphsensor.tphsensorStart|block": "啟動 TPH Sensor Start",
+
+    "tphsensor.tphgetTemp|block": "讀取 TPH get Temperature",
+
+    "tphsensor.tphgetPressure|block": "讀取 TPH get Pressure",
+
+    "tphsensor.tphgetHumidity|block": "讀取 TPH get Humidity",
+
+ }
