@@ -1,7 +1,7 @@
 {
     "name": "tphsensor",
     "version": "0.0.1",
-    "description": "自製的 TPHSensor 積木",
+    "description": "自製的 TPH Sensor 積木",
     "license": "MIT",
     "dependencies": {
         "core": "*"
