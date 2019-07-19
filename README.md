@@ -12,5 +12,5 @@ MIT
 (The metadata above is needed for package search.)
 
 ```package
-"TPH Sensor"=github.com/henrywycheng/pxt-tphsensorblock
+tphsensor=github.com/henrywycheng/pxt-tphsensorblock
 ```
