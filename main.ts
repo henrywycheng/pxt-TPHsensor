@@ -25,8 +25,8 @@ namespace tphsensor {
 	let H = 0
 	let var1 = 0
 	let var2 = 0
-	let t_fine = 0
-	let var_H = 0
+	let tfine = 0
+	let varH = 0
 	let Temperature = 0
 	let p = 0
 	let Pressure = 0
