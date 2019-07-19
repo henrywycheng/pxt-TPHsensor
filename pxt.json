@@ -1,0 +1,15 @@
+{
+    "name": "selfblock",
+    "version": "0.0.1",
+    "description": "這是自製的 micro:bit Sensors 積木",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*"
+    },
+    "files": [
+        "README.md",
+        "main.ts",
+        "_locales/zh/selfblock-strings.json"
+    ],
+    "public": true
+}

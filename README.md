@@ -1,6 +1,6 @@
-# tphsensor
+# selfblock
 
-自製的 TPHSensor 積木
+這是自製的 micro:bit Sensors 積木
 
 ## License
 
@@ -12,5 +12,5 @@ MIT
 (The metadata above is needed for package search.)
 
 ```package
-tphsensor=github.com/henrywycheng/pxt-tphsensorblock
+selfblock=github.com/henrywycheng/pxt-selfblock
 ```
