@@ -1,6 +1,6 @@
 # tphsensor
 
-自製的 micro:bit TPH sensor 積木
+自製的 micro:bit TPH Sensor 積木
 
 ## License
 
