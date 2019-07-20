@@ -2,7 +2,7 @@
 
 namespace tphsensor {
 
-/*	let T1 = 0
+	let T1 = 0
 	let T2 = 0
 	let T3 = 0
 	let P1 = 0
@@ -19,21 +19,21 @@ namespace tphsensor {
 	let H3 = 0
 	let H4 = 0
 	let H5 = 0
-	let H6 = 0 */
+	let H6 = 0
 	let P = 0
 	let T = 0
 	let H = 0
-/*	let var1 = 0
+	let var1 = 0
 	let var2 = 0
 	let tfine = 0
-	let varH = 0 */
+	let varH = 0
 	let Temperature = 0
-/*	let p1 = 0 */
+	let p1 = 0
 	let Pressure = 0
 	let Humidity = 0
 
 	function ReadCoeff() {
-/*		pins.i2cWriteNumber(118, 136, NumberFormat.UInt8LE, false)
+		pins.i2cWriteNumber(118, 136, NumberFormat.UInt8LE, false)
 		T1 = pins.i2cReadNumber(118, NumberFormat.UInt16LE, false)
 		if (T1 < 0) T1 = 65536 + T1
 		pins.i2cWriteNumber(118, 138, NumberFormat.UInt8LE, false)
@@ -86,18 +86,18 @@ namespace tphsensor {
 		H5 = Math.idiv(H5, 16)
 		pins.i2cWriteNumber(118, 231, NumberFormat.UInt8LE, false)
 		H6 = pins.i2cReadNumber(118, NumberFormat.UInt8LE, false)
-		if (H6 < 0) H6 = 256 + H6 */
+		if (H6 < 0) H6 = 256 + H6
 	}
 	
 	function Caltemperature() {
-/*		var1 = (T / 16384.0 - T1 / 1024.0) * T2
+		var1 = (T / 16384.0 - T1 / 1024.0) * T2
 		var2 = ((T / 131072.0 - T1 / 8192.0) * (T / 131072.0 - T1 / 8192.0)) * T3
 		tfine = (var1 + var2) 
-		Temperature = (var1 + var2) / 5120.0 */
+		Temperature = (var1 + var2) / 5120.0 
 	}
 	
 	function Calpressure() {
-/*		var1 = tfine / 2.0 - 64000.0
+		var1 = tfine / 2.0 - 64000.0
 		var2 = var1 * var1 * P6 / 32768.0
 		var2 = var2 + var1 * P5 * 2.0
 		var2 = var2 / 4.0 + P4 * 65536.0
@@ -111,16 +111,16 @@ namespace tphsensor {
 		var2 = p1 * P8 / 32768.0
 		p1 = p1 + (var1 + var2 + P7) / 16.0
 		Pressure = p1
-		} */
+		} 
 	}
 
 	function Calhumidity() {
-/*		varH = tfine - 76800.0
+		varH = tfine - 76800.0
 		varH = (H - (H4 * 64.0 + H5 / 16384.0 * varH)) * (H2 / 65536.0 * (1.0 + H6 / 67108864.0 * varH * (1.0 + H3 / 67108864.0 * varH)))
 		varH = varH * (1.0 - H1 * varH / 524288.0)
 		if (varH < 0) varH = 0
 		if (varH > 100) Humidity = 100
-		else Humidity = varH */
+		else Humidity = varH
 	}
 
     /* BME280 TPH sensor addr 0x76 return boolean */
