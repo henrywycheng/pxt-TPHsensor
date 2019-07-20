@@ -161,7 +161,7 @@ namespace tphsensor {
         basic.pause(200)
         T = Math.idiv(T, 4096)
         if (T < 0) T = 1048576 + T
-	CalTemperature()
+//	CalTemperature()
 	return Temperature
     }
 
@@ -178,7 +178,7 @@ namespace tphsensor {
         basic.pause(200)
         P = Math.idiv(P, 4096)
         if (P < 0) P = 1048576 + P
-	CalPressure()
+//	CalPressure()
 	return Pressure
     }
 
@@ -193,7 +193,7 @@ namespace tphsensor {
         H = pins.i2cReadNumber(118, NumberFormat.UInt16BE, false)
         basic.pause(200)
         if (H < 0) H = 65536 + H
-	CalHumidity()
+//	CalHumidity() 
 	return Humidity
     }
 
