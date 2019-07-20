@@ -28,7 +28,7 @@ namespace tphsensor {
 	let tfine = 0
 	let varH = 0
 	let Temperature = 0
-	let p = 0
+	let p1 = 0
 	let Pressure = 0
 	let Humidity = 0
 
@@ -92,7 +92,7 @@ namespace tphsensor {
 	function CalTemp() {
 		var1 = (T / 16384.0 - T1 / 1024.0) * T2
 		var2 = ((T / 131072.0 - T1 / 8192.0) * (T / 131072.0 - T1 / 8192.0)) * T3
-		tfine = (var1 + var2) %  4294967296
+		tfine = (var1 + var2) 
 		Temperature = (var1 + var2) / 5120.0
 	}
 	
@@ -103,17 +103,16 @@ namespace tphsensor {
 		var2 = var2 / 4.0 + P4 * 65536.0
 		var1 = (P3 * var1 * var1 / 524288.0 + P2 * var1) / 524288.0
 		var1 = (1.0 + var1 / 32768.0) * P1
-		if (var1 == 0.0) {
-			Pressure = 0
-			return
-		}
-		p = 1048576.0 - P
-		p = (p - var2 / 4096.0) * 6250.0 / var1
+		if (var1 == 0.0) Pressure = 0
+		else {
+		p1 = 1048576.0 - P
+		p1 = (p1 - var2 / 4096.0) * 6250.0 / var1
 		/*    var1 = P9 * p * p / 2147483648.0; */
-		var1 = P9 * (p / 65536) * (p / 32768)
-		var2 = p * P8 / 32768.0
-		p = p + (var1 + var2 + P7) / 16.0
-		Pressure = p
+		var1 = P9 * (p1 / 65536) * (p1 / 32768)
+		var2 = p1 * P8 / 32768.0
+		p1 = p1 + (var1 + var2 + P7) / 16.0
+		Pressure = p1
+		}
 	}
 
 	function CalHumidity() {
