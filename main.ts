@@ -90,14 +90,14 @@ namespace tphsensor {
 	}
 	
 	function CalTemp() {
-		var1 = (T / 16384.0 - T1 / 1024.0) * T2
+/*		var1 = (T / 16384.0 - T1 / 1024.0) * T2
 		var2 = ((T / 131072.0 - T1 / 8192.0) * (T / 131072.0 - T1 / 8192.0)) * T3
 		tfine = (var1 + var2) 
-		Temperature = (var1 + var2) / 5120.0
+		Temperature = (var1 + var2) / 5120.0 */
 	}
 	
 	function CalPressure() {
-		var1 = tfine / 2.0 - 64000.0
+/*		var1 = tfine / 2.0 - 64000.0
 		var2 = var1 * var1 * P6 / 32768.0
 		var2 = var2 + var1 * P5 * 2.0
 		var2 = var2 / 4.0 + P4 * 65536.0
@@ -107,21 +107,20 @@ namespace tphsensor {
 		else {
 		p1 = 1048576.0 - P
 		p1 = (p1 - var2 / 4096.0) * 6250.0 / var1
-		/*    var1 = P9 * p * p / 2147483648.0; */
 		var1 = P9 * (p1 / 65536) * (p1 / 32768)
 		var2 = p1 * P8 / 32768.0
 		p1 = p1 + (var1 + var2 + P7) / 16.0
 		Pressure = p1
-		}
+		} */
 	}
 
 	function CalHumidity() {
-		varH = tfine - 76800.0
+/*		varH = tfine - 76800.0
 		varH = (H - (H4 * 64.0 + H5 / 16384.0 * varH)) * (H2 / 65536.0 * (1.0 + H6 / 67108864.0 * varH * (1.0 + H3 / 67108864.0 * varH)))
 		varH = varH * (1.0 - H1 * varH / 524288.0)
 		if (varH < 0) varH = 0
 		if (varH > 100) Humidity = 100
-		else Humidity = varH
+		else Humidity = varH */
 	}
 
     /* BME280 TPH sensor addr 0x76 return boolean */
