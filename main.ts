@@ -153,7 +153,7 @@ namespace tphsensor {
     //% blockId="tphgettemp" block="TPH get Temperature"
     //% blockGap=2 weight=88
     export function tphgettemp(): number {
-/*	pins.setPull(DigitalPin.P19, PinPullMode.PullUp)
+	pins.setPull(DigitalPin.P19, PinPullMode.PullUp)
 	pins.setPull(DigitalPin.P20, PinPullMode.PullUp)
         pins.i2cWriteNumber(118, 250, NumberFormat.UInt8BE, false)
         basic.pause(200)
@@ -161,7 +161,7 @@ namespace tphsensor {
         basic.pause(200)
         T = Math.idiv(T, 4096)
         if (T < 0) T = 1048576 + T
-	CalTemperature() */
+	CalTemperature() 
 	return Temperature
     }
 
