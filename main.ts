@@ -153,7 +153,7 @@ namespace tphsensor {
     //% blockId="tphgettemp" block="TPH get Temperature"
     //% blockGap=2 weight=88
     export function tphgettemp(): number {
-	pins.setPull(DigitalPin.P19, PinPullMode.PullUp)
+/*	pins.setPull(DigitalPin.P19, PinPullMode.PullUp)
 	pins.setPull(DigitalPin.P20, PinPullMode.PullUp)
         pins.i2cWriteNumber(118, 250, NumberFormat.UInt8BE, false)
         basic.pause(200)
@@ -161,7 +161,7 @@ namespace tphsensor {
         basic.pause(200)
         T = Math.idiv(T, 4096)
         if (T < 0) T = 1048576 + T
-//	CalTemperature()
+	CalTemperature() */
 	return Temperature
     }
 
@@ -170,7 +170,7 @@ namespace tphsensor {
     //% blockId="tphgetPressure" block="TPH get Pressure"
     //% blockGap=2 weight=88
     export function tphgetPressure(): number {
-	pins.setPull(DigitalPin.P19, PinPullMode.PullUp)
+/*	pins.setPull(DigitalPin.P19, PinPullMode.PullUp)
 	pins.setPull(DigitalPin.P20, PinPullMode.PullUp)
         pins.i2cWriteNumber(118, 247, NumberFormat.UInt8BE, false)
         basic.pause(200)
@@ -178,7 +178,7 @@ namespace tphsensor {
         basic.pause(200)
         P = Math.idiv(P, 4096)
         if (P < 0) P = 1048576 + P
-//	CalPressure()
+	CalPressure() */
 	return Pressure
     }
 
@@ -186,14 +186,14 @@ namespace tphsensor {
     //% blockId="tphgetHumidity" block="TPH get Humidity"
     //% blockGap=2 weight=88
     export function tphgetHumidty(): number {
-	pins.setPull(DigitalPin.P19, PinPullMode.PullUp)
+/*	pins.setPull(DigitalPin.P19, PinPullMode.PullUp)
 	pins.setPull(DigitalPin.P20, PinPullMode.PullUp)
         pins.i2cWriteNumber(118, 253, NumberFormat.UInt8BE, false)
         basic.pause(200)
         H = pins.i2cReadNumber(118, NumberFormat.UInt16BE, false)
         basic.pause(200)
         if (H < 0) H = 65536 + H
-//	CalHumidity() 
+	CalHumidity() */
 	return Humidity
     }
 
