@@ -2,7 +2,7 @@
 
 namespace tphsensor {
 
-	let T1 = 0
+/*	let T1 = 0
 	let T2 = 0
 	let T3 = 0
 	let P1 = 0
@@ -19,16 +19,16 @@ namespace tphsensor {
 	let H3 = 0
 	let H4 = 0
 	let H5 = 0
-	let H6 = 0
+	let H6 = 0 */
 	let P = 0
 	let T = 0
 	let H = 0
-	let var1 = 0
+/*	let var1 = 0
 	let var2 = 0
 	let tfine = 0
-	let varH = 0
+	let varH = 0 */
 	let Temperature = 0
-	let p1 = 0
+/*	let p1 = 0 */
 	let Pressure = 0
 	let Humidity = 0
 
