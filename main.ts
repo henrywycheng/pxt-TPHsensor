@@ -89,14 +89,14 @@ namespace tphsensor {
 		if (H6 < 0) H6 = 256 + H6 */
 	}
 	
-	function CalTemp() {
+	function Caltemperature() {
 /*		var1 = (T / 16384.0 - T1 / 1024.0) * T2
 		var2 = ((T / 131072.0 - T1 / 8192.0) * (T / 131072.0 - T1 / 8192.0)) * T3
 		tfine = (var1 + var2) 
 		Temperature = (var1 + var2) / 5120.0 */
 	}
 	
-	function CalPressure() {
+	function Calpressure() {
 /*		var1 = tfine / 2.0 - 64000.0
 		var2 = var1 * var1 * P6 / 32768.0
 		var2 = var2 + var1 * P5 * 2.0
@@ -114,7 +114,7 @@ namespace tphsensor {
 		} */
 	}
 
-	function CalHumidity() {
+	function Calhumidity() {
 /*		varH = tfine - 76800.0
 		varH = (H - (H4 * 64.0 + H5 / 16384.0 * varH)) * (H2 / 65536.0 * (1.0 + H6 / 67108864.0 * varH * (1.0 + H3 / 67108864.0 * varH)))
 		varH = varH * (1.0 - H1 * varH / 524288.0)
@@ -161,7 +161,7 @@ namespace tphsensor {
         basic.pause(200)
         T = Math.idiv(T, 4096)
         if (T < 0) T = 1048576 + T
-	CalTemperature() 
+	Caltemperature() 
 	return Temperature
     }
 
@@ -170,7 +170,7 @@ namespace tphsensor {
     //% blockId="tphgetPressure" block="TPH get Pressure"
     //% blockGap=2 weight=88
     export function tphgetPressure(): number {
-/*	pins.setPull(DigitalPin.P19, PinPullMode.PullUp)
+	pins.setPull(DigitalPin.P19, PinPullMode.PullUp)
 	pins.setPull(DigitalPin.P20, PinPullMode.PullUp)
         pins.i2cWriteNumber(118, 247, NumberFormat.UInt8BE, false)
         basic.pause(200)
@@ -178,7 +178,7 @@ namespace tphsensor {
         basic.pause(200)
         P = Math.idiv(P, 4096)
         if (P < 0) P = 1048576 + P
-	CalPressure() */
+	Calpressure()
 	return Pressure
     }
 
@@ -186,14 +186,14 @@ namespace tphsensor {
     //% blockId="tphgetHumidity" block="TPH get Humidity"
     //% blockGap=2 weight=88
     export function tphgetHumidty(): number {
-/*	pins.setPull(DigitalPin.P19, PinPullMode.PullUp)
+	pins.setPull(DigitalPin.P19, PinPullMode.PullUp)
 	pins.setPull(DigitalPin.P20, PinPullMode.PullUp)
         pins.i2cWriteNumber(118, 253, NumberFormat.UInt8BE, false)
         basic.pause(200)
         H = pins.i2cReadNumber(118, NumberFormat.UInt16BE, false)
         basic.pause(200)
         if (H < 0) H = 65536 + H
-	CalHumidity() */
+	Calhumidity() 
 	return Humidity
     }
 
