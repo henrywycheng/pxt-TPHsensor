@@ -33,7 +33,7 @@ namespace tphsensor {
 	let Humidity = 0
 
 	function ReadCoeff() {
-		pins.i2cWriteNumber(118, 136, NumberFormat.UInt8LE, false)
+/*		pins.i2cWriteNumber(118, 136, NumberFormat.UInt8LE, false)
 		T1 = pins.i2cReadNumber(118, NumberFormat.UInt16LE, false)
 		if (T1 < 0) T1 = 65536 + T1
 		pins.i2cWriteNumber(118, 138, NumberFormat.UInt8LE, false)
@@ -86,7 +86,7 @@ namespace tphsensor {
 		H5 = Math.idiv(H5, 16)
 		pins.i2cWriteNumber(118, 231, NumberFormat.UInt8LE, false)
 		H6 = pins.i2cReadNumber(118, NumberFormat.UInt8LE, false)
-		if (H6 < 0) H6 = 256 + H6
+		if (H6 < 0) H6 = 256 + H6 */
 	}
 	
 	function CalTemp() {
